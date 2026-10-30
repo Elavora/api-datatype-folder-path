@@ -23,7 +23,8 @@ Guia de uso, com a API pública e exemplos: [docs/USO.md](docs/USO.md).
 composer require elavora/api-datatype-folder-path
 ```
 
-Requisitos: PHP 8.1 ou superior, `elavora/api-datatype-core` `^0.1` e `elavora/api-datatype-folder-name` `^0.1`.
+Requisitos: PHP 8.3 ou superior, `elavora/api-datatype-core` `^2.0` (que usa o `elavora/api-framework` `^2.0`)
+e `elavora/api-datatype-folder-name` `^1.0`.
 
 ## Desenvolvimento e testes
 
@@ -58,6 +59,11 @@ estão em [Desenvolvimento e testes](docs/DESENVOLVIMENTO.md).
 5. Confira o comentário do pipeline de qualidade no PR. Ele não bloqueia o merge, mas quem revisa olha o resultado.
 
 ## Versões
+
+Versão `1.0.0`: atualiza o pacote para o `elavora/api-datatype-core` `^2.0` e o `elavora/api-datatype-folder-name`
+`^1.0` e exige PHP 8.3 ou superior (antes: PHP 8.1, core `^0.1` e folder-name `^0.1`). A API pública de `FolderPath` não
+muda, e o código em `src/` continua o mesmo. O core `^0.1` não funciona mais com o framework atual, por isso a
+restrição antiga deixa de ser aceita.
 
 Cada PR integrado na `main` gera uma versão automaticamente, conforme as labels do PR: sem a label `release` sai uma
 beta (`1.1.0-beta.1`), com ela sai a estável (`1.1.0`). As tags novas não têm o prefixo `v`, e as notas de cada

@@ -418,9 +418,9 @@ depois de `:` e sem sequências `\uXXXX` (por exemplo, `">=8.3"`, e não `">=8.3
 {
   "name": "elavora/<repo>",
   "require": {
-    "php": ">=8.1",
-    "elavora/api-datatype-core": "^0.1",
-    "elavora/api-datatype-folder-name": "^0.1"
+    "php": ">=8.3",
+    "elavora/api-datatype-core": "^2.0",
+    "elavora/api-datatype-folder-name": "^1.0"
   },
   "require-dev": {
     "elavora/code-standards": "^1.1",
@@ -447,6 +447,12 @@ depois de `:` e sem sequências `\uXXXX` (por exemplo, `">=8.3"`, e não `">=8.3
 
 O exemplo mostra só as chaves que esta adoção cria ou muda. As demais (`description`, `type`, `license`, as outras
 dependências de `require`, `autoload`, `extra.branch-alias`) continuam como estão, na ordem atual.
+
+- Este PR também é o upgrade para o `elavora/api-datatype-core` 2.0: `php` sobe de `>=8.1` para `>=8.3`,
+  `elavora/api-datatype-core` sobe de `^0.1` para `^2.0` e `elavora/api-datatype-folder-name` sobe de `^0.1` para
+  `^1.0` (a `1.0.0` já está no Packagist). O core 2 exige o `elavora/api-framework` `^2.0`, que também exige PHP 8.3. O
+  `src/` não muda: `FolderPath` continua estendendo `AbstractDataType`, com a mesma API pública. Em
+  `extra.branch-alias`, `dev-main` passa de `0.1-dev` para `1.0-dev`, a série da versão que este PR gera.
 
 - `elavora/code-standards` fica em `require-dev`, nunca em `require`. A restrição é `^1.` seguido do minor (1 ou
   maior) e, opcionalmente, do patch. O minor mínimo é 1 porque o subcomando `lint` só existe a partir da 1.1.0, e o CI
@@ -840,7 +846,10 @@ As regras completas estão no `Elavora/.github`: [versionamento](https://github.
 - Só o último PR de uma série de mudanças leva `release`.
 
 **Neste repositório:** a última tag é a legada `v0.2.0`, que conta como a estável `0.2.0` (as outras são `v0.1.0` e
-`v0.1.1`). A versão do merge sai das labels do PR, conforme a tabela acima.
+`v0.1.1`). Um único PR faz o upgrade para o `elavora/api-datatype-core` `^2.0` (PHP 8.3) e adota o pipeline. Ele é o
+último PR da série e leva as labels `upgrade` (major) e `release` (estável), então o merge gera a estável `1.0.0`. O
+`release.yml` novo roda no merge desse mesmo PR, e o `tag_on_merge.yml` antigo já não existe nele, então sai uma
+release só.
 
 O Packagist é avisado pelo `release.yml` a cada release, com o secret `PACKAGIST_WEBHOOK_URL`. O pacote só fica
 disponível na versão nova depois dessa notificação.
