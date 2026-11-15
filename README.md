@@ -23,7 +23,7 @@ Guia de uso, com a API pública e exemplos: [docs/USO.md](docs/USO.md).
 composer require elavora/api-datatype-folder-path
 ```
 
-Requisitos: PHP 8.3 ou superior, `elavora/api-datatype-core` `^2.0` (que usa o `elavora/api-framework` `^2.0`)
+Requisitos: PHP 8.3 ou superior, `elavora/api-datatype-core` `^3.0` (que usa o `elavora/api-framework` `^3.0`)
 e `elavora/api-datatype-folder-name` `^1.0`.
 
 ## Desenvolvimento e testes
