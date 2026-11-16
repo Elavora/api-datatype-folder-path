@@ -23,6 +23,17 @@ $valor = new FolderPath('/var/uploads');
 $normalizado = $valor->value();
 ```
 
+## Documentacao do tipo (OPTIONS)
+
+`FolderPath` implementa `Elavora\Api\Framework\Contracts\DescribesType`. O OPTIONS publico da API usa
+`documentedType()` para documentar o campo sem expor o nome da classe PHP. O tipo declara:
+
+- `type`: `string`
+- `description`: caminho separado por `/`, com barra inicial opcional, sem pastas vazias e sem os caracteres proibidos em nomes de pasta
+- `example`: `/var/uploads`
+
+Quem valida continua sendo `isValid()`.
+
 ## Principais pontos de entrada
 
 - `Elavora\Api\DataTypes\Filesystem\FolderPath`
